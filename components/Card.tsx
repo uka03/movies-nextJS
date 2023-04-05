@@ -1,8 +1,11 @@
-import movieType from "./type/moviesType";
+import movieType from "../pages/type/moviesType";
 
 export default function Card(prop: movieType): JSX.Element {
   return (
-    <div className="w-[270px] h-[440px] flex justify-center items-center ">
+    <a
+      className="w-[270px] h-[440px] flex justify-center items-center  "
+      href={`http://localhost:3000/${prop._id}`}
+    >
       <div className="w-full h-full hover:w-10/12 hover:h-5/6 transition-all duration-700 delay-200 hover:shadow-2xl hover:text-lg hover:shadow-white">
         <picture className=" h-[91%] block">
           <img src={prop.poster} className="w-full h-full" alt="" />
@@ -11,6 +14,6 @@ export default function Card(prop: movieType): JSX.Element {
           <p>{prop.title}</p>
         </div>
       </div>
-    </div>
+    </a>
   );
 }

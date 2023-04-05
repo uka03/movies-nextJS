@@ -1,20 +1,20 @@
-type awardsType = {
+type AwardsType = {
   wins: number;
   nominations: number;
   text: string;
 };
 
-type imdbType = {
+type ImdbType = {
   rating: number;
   votes: number;
   id: number;
 };
-type viewerType = {
+type ViewerType = {
   rating: number;
   numReviews: number;
   meter: number;
 };
-type tomatoesType = { viewer: viewerType; lastUpdated: Date };
+type TomatoesType = { viewer: ViewerType; lastUpdated: Date };
 
 interface movieType {
   [x: string]: unknown;
@@ -30,13 +30,13 @@ interface movieType {
   released: Date;
   directors: string[];
   rated?: string;
-  awards: awardsType;
+  awards: AwardsType;
   lastupdated: string;
   year: number;
-  imdb: imdbType;
+  imdb: ImdbType;
   countries: string[];
   type: string;
-  tomatoes: tomatoesType;
+  tomatoes: TomatoesType;
 }
 
 export default movieType;

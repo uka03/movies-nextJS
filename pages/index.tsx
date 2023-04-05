@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "../components/Card";
 import movieType from "./type/moviesType";
 
 export default function Home(): JSX.Element | undefined {
   const [movies, setMovies] = useState<movieType[]>([]);
+  const [limit, setlimit] = useState<number>(16);
   useEffect(() => {
-    axios.get("http://localhost:8080/movies").then((res) => {
+    axios.get(`http://localhost:8080/movies?limit=${limit}`).then((res) => {
       setMovies(res.data);
     });
-  }, []);
+  }, [limit]);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (movies) {
@@ -25,6 +26,14 @@ export default function Home(): JSX.Element | undefined {
             )
           )}
         </div>
+        <button
+          className="bg-white p-5 text-black ms-[50%] w-[200px]"
+          onClick={() => {
+            setlimit(limit + 8);
+          }}
+        >
+          more
+        </button>
       </div>
     );
   }
