@@ -5,11 +5,13 @@ import movieType from "./type/moviesType";
 
 export default function Home(): JSX.Element | undefined {
   const [movies, setMovies] = useState<movieType[]>([]);
-  const [limit, setlimit] = useState<number>(16);
+  const [limit, setlimit] = useState<number>(8);
   useEffect(() => {
-    axios.get(`http://localhost:8080/movies?limit=${limit}`).then((res) => {
-      setMovies(res.data);
-    });
+    axios
+      .get(`http://localhost:8080/movies?limit=${limit}`)
+      .then((res): void => {
+        setMovies([...movies, ...res.data]);
+      });
   }, [limit]);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
