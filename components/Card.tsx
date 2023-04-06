@@ -1,10 +1,11 @@
+import Link from "next/link";
 import movieType from "../pages/type/moviesType";
 
 export default function Card(prop: movieType): JSX.Element {
   return (
-    <a
+    <Link
       className="w-[270px] h-[440px] flex justify-center items-center  "
-      href={`http://localhost:3000/${prop._id}`}
+      href={`movies/${prop._id}`}
     >
       <div className="w-full h-full hover:w-10/12 hover:h-5/6 transition-all duration-700 delay-200 hover:shadow-2xl hover:text-lg hover:shadow-white">
         <picture className=" h-[91%] block">
@@ -14,6 +15,6 @@ export default function Card(prop: movieType): JSX.Element {
           <p>{prop.title}</p>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

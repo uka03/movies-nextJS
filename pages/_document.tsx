@@ -1,3 +1,4 @@
+import Layot from "@/components/Layot";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document(): JSX.Element {
@@ -5,8 +6,10 @@ export default function Document(): JSX.Element {
     <Html lang="en">
       <Head />
       <body>
-        <Main />
-        <NextScript />
+        <Layot>
+          <Main />
+          <NextScript />
+        </Layot>
       </body>
     </Html>
   );

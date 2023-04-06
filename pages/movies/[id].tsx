@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextRouter, useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import movieType from "./type/moviesType";
+import movieType from "../type/moviesType";
 
 export default function MoviePage(): JSX.Element {
   const router: NextRouter = useRouter();
