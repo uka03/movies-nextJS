@@ -1,4 +1,4 @@
-import movieType from "@/pages/type/moviesType";
+import movieType from "@/pages/moviesType";
 import Cardmini from "./Cardmini";
 
 export default function Scroll({ prop }: movieType[]) {

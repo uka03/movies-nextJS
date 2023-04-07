@@ -20,14 +20,20 @@ export default function Movies(): JSX.Element | undefined {
     return (
       <div className="w-[100vw] min-h-[100vh] bg-gray-900">
         <div className="container mx-auto  max-w-screen-xl p-10 min-h-[90vh] flex  flex-wrap justify-between gap-5">
-          {movies.map(
-            (movie: movieType, index: number): JSX.Element => (
-              <div className="" key={index}>
-                {" "}
-                <Card {...movie} />
-              </div>
-            )
-          )}
+          <div className="">
+            <button>newest</button>
+          </div>
+          <div className="flex  flex-wrap justify-between gap-5">
+            {" "}
+            {movies.map(
+              (movie: movieType, index: number): JSX.Element => (
+                <div className="" key={index}>
+                  {" "}
+                  <Card {...movie} />
+                </div>
+              )
+            )}
+          </div>
         </div>
         <button
           className="bg-white p-5 text-black ms-[50%] w-[200px]"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import movieType from "../pages/type/moviesType";
+import movieType from "../pages/moviesType";
 
 export default function Card(prop: movieType): JSX.Element {
   return (

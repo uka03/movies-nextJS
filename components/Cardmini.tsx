@@ -1,4 +1,4 @@
-import movieType from "@/pages/type/moviesType";
+import movieType from "@/pages/moviesType";
 import Link from "next/link";
 
 export default function Cardmini(prop: movieType): JSX.Element {

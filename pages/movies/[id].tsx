@@ -1,20 +1,25 @@
 import axios from "axios";
-import { NextRouter, useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { GetStaticPropsContext } from "next";
+
 import movieType from "../type/moviesType";
 
-export default function MoviePage(): JSX.Element {
-  const router: NextRouter = useRouter();
-  const id: string[] | string | undefined = router.query.id;
-  const [movie, setMovies] = useState<movieType>();
+export default function MoviePage({
+  data: movie,
+}: {
+  data: movieType;
+}): JSX.Element {
+  // const router: NextRouter = useRouter();
+  // const id: string[] | string | undefined = router.query.id;
+  // const [movie, setMovies] = useState<movieType>();
 
-  useEffect(() => {
-    id &&
-      axios
-        .get(`http://localhost:8080/movies?id=${id}`)
-        .then((res) => setMovies(res.data));
-  }, [id]);
+  // useEffect(() => {
+  //   id &&
+  //     axios
+  //       .get(`http://localhost:8080/movies?id=${id}`)
+  //       .then((res) => setMovies(res.data));
+  // }, [id]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (movie) {
     return (
       <div className="w-[100vw] min-h-[100vh] bg-gray-900">
@@ -92,4 +97,22 @@ export default function MoviePage(): JSX.Element {
     );
   }
   return <div className="">loading</div>;
+}
+
+export async function getStaticPaths() {
+  const res = await axios.get("http://localhost:8080/movies_ids");
+  const data = res.data;
+  const paths = await data.map((id: { _id: string }) => ({
+    params: { id: id._id },
+  }));
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const res = await axios.get(`http://localhost:8080/movies?id=${params?.id}`);
+  const movie = res.data;
+  return { props: { data: movie } };
 }

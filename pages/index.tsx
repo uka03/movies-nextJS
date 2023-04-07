@@ -1,7 +1,7 @@
 import Scroll from "@/components/Scroll";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import movieType from "./type/moviesType";
+import movieType from "./moviesType";
 
 export default function Home(): JSX.Element | undefined {
   const [movies, setMovies] = useState<movieType[]>([]);
